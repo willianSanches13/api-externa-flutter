@@ -8,7 +8,6 @@ class EstadoService {
     var response = await http.get(Uri.parse(url));
     var json = jsonDecode(response.body);
     List lista = json.map((objJson) => Estado.fromJson(objJson)).toList();
-    print(lista[0].nome);
     return lista;
   }
 }
