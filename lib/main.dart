@@ -11,11 +11,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Estados',
+      title: 'Colaboracao',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Estados'),
+      home: MyHomePage(title: 'Colaboracao'),
     );
   }
 }
@@ -30,12 +30,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  late Future<List<dynamic>> estados;
+  late Future<List<dynamic>> cols;
 
   @override
   void initState() {
     super.initState();
-    estados = EstadoService().fetch();
+    cols = ColaboracaoService().fetch();
   }
 
   @override
@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: FutureBuilder<List<dynamic>>(
-            future: estados,
+            future: cols,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return ListView.builder(
@@ -59,8 +59,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       return Card(
                           child: ListTile(
                         leading: FlutterLogo(size: 16.0),
-                        title: Text(snapshot.data![index].nome),
-                        subtitle: Text(snapshot.data![index].sigla.toString()),
+                        title: Text(snapshot.data![index].descricao),
+                        subtitle:
+                            Text(snapshot.data![index].proveniencia.toString()),
                       ));
                     });
               } else if (snapshot.hasError) {

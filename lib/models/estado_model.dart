@@ -1,10 +1,15 @@
-class Estado {
-  final int? id;
-  final String? nome;
-  final String? sigla;
+class Colaboracao {
+  final String? descricao;
+  final String? audio;
+  final String? imagem;
+  final String? proveniencia;
 
-  Estado({this.id, this.nome, this.sigla});
-  factory Estado.fromJson(Map<String, dynamic> json) {
-    return Estado(id: json['id'], nome: json['nome'], sigla: json['sigla']);
+  Colaboracao({this.descricao, this.audio, this.imagem, this.proveniencia});
+  factory Colaboracao.fromJson(Map<String, dynamic> json) {
+    return Colaboracao(
+        descricao: json['descricao'],
+        audio: json['audio'],
+        imagem: json['imagem'],
+        proveniencia: json['proveniencia']);
   }
 }
